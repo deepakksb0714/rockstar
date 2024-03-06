@@ -1,0 +1,33 @@
+<%= form_with(model: image_link) do |form| %>
+    <% if image_link.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(image_link.errors.count, "error") %>:</h2>
+  
+        <ul>
+          <% image_link.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div>
+      <%= form.label :url, style: "display: block" %>
+      <%= form.text_field :url, autocomplete: "off", placeholder: "Enter image link" %>
+      
+    </div>
+  <br>
+  
+  <div class="field">
+      <%= form.label :tag, style: "display: block" %>
+      <%= form.text_field :tag_list, placeholder: "Enter tags", autocomplete: "off" %>
+    </div><br>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
+  
+  
+  

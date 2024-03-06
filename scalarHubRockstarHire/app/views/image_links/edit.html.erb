@@ -1,0 +1,18 @@
+<h1>Editing image link</h1>
+
+<div>
+  <% if @image_link.url.present? %>
+    <%= image_tag(@image_link.url, alt: "Image", style: "width: 700px;") %><br>
+  <% else %>
+    <p>No image available.</p>
+  <% end %>
+</div>
+
+<%= render "form", image_link: @image_link %>
+
+<br>
+
+<div>
+  <%= link_to "Show this image link", @image_link %> |
+  <%= link_to "Back to image", image_links_path %>
+</div>

@@ -1,0 +1,47 @@
+</br>
+  <ul>
+    <div>
+      <% if @image_link.url.present? %>
+        <%= image_tag(@image_link.url, alt: "Image", style: "width: 700px;") %><br>
+      <% else %>
+        <p>No image available.</p>
+      <% end %>
+    </div>
+  
+</br>
+    <div>
+
+      <p><strong>Tags:</strong> </br><%= @image_link.tags.map(&:name).join(', ') %></p>
+      <%= link_to "Edit this Image link", edit_image_link_path(@image_link), class: "badge text-bg-info" %> |
+      <%= link_to "Show All Image", image_links_path, class: "badge text-bg-info" %>
+      
+    </br>
+  </br>
+    <%= button_to "Delete Image", @image_link, method: :delete, data: { confirm: "Are you sure you want to delete this image link?" }, class: "badge text-bg-info" %>
+    
+  </div>
+  </ul>
+<h2>Related Images:</h2>
+  <ul>
+    <% @image_link.tag_list.each do |tag| %>
+        <h3><% tag %></h3>
+       
+        <div id="image_links" class="row">
+          <% ImageLink.tagged_with(tag).each do |image| %>
+            <div class="col-md-4"> 
+            
+            <%= link_to image_tag(image.url, class: "img-fluid img-thumbnail zoomable-image", style: "width: 430px; height:300px;"), image_link_path(image) %></br>
+            </div>
+          <% end %></br>
+        </div>
+        
+    <% end %>
+  </ul>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+<h1>Filtered Images</h1>
+
+<% if @filtered_image_links.nil? || @filtered_image_links.empty? %>
+  <p>No images found for the specified tag.</p>
+<% else %>
+  <ul>
+    <% @filtered_image_links.each do |image_link| %>
+      <li><%= image_link.title %></li>
+    <% end %>
+  </ul>
+<% end %>
+
